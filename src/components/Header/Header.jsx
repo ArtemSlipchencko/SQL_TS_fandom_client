@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import UserInfo from "../UserInfo/UserInfo";
 import "./header.scss";
 
@@ -9,7 +10,7 @@ export default function Header() {
         <span>FANDOM</span>
         <ul>
           <li>
-            <a href="/main">Main</a>
+            <Link to="/">Main</Link>
           </li>
         </ul>
         <UserInfo />

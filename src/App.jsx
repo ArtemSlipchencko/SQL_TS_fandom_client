@@ -1,18 +1,18 @@
-import React, { lazy } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
-import { Suspense, useEffect } from "react";
+import React, { Suspense, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import Header from "./components/Header/Header";
 import Main from "./pages/Main/Main";
 import Auth from "./pages/Auth/Auth";
 import NotFound from "./pages/NotFound/NotFound";
-import data from "./redux/operations/dataOperations";
+import userOperations from "./redux/operations/userOperations";
 import "./sass/main.scss";
+import { useSelector } from "react-redux";
 
 export default function App() {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(data.getData());
+    dispatch(userOperations.currentUser());
   });
 
   return (
@@ -20,8 +20,9 @@ export default function App() {
       <Header />
       <Suspense fallback="Loading">
         <Routes>
-          <Route exact path="/" element={<Main />} />
-          <Route exact path="/auth" element={<Auth />} />
+          <Route path="/" element={<Main />} />
+          <Route path="/auth" element={<Auth />} />
+          <Route element={<NotFound />} />
         </Routes>
       </Suspense>
     </>

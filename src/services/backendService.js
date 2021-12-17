@@ -5,6 +5,14 @@ const url = "http://localhost:5500/";
 axios.defaults.baseURL = url;
 
 class Backend {
+  setToken(token) {
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  }
+
+  unsetToken() {
+    axios.defaults.headers.common.Authorization = `Bearer ''`;
+  }
+
   getPosts() {
     return axios.get("publish/article");
   }
@@ -17,8 +25,8 @@ class Backend {
     return axios.post("users/login", credentials);
   }
 
-  currentUser(credentials) {
-    return axios.post("users/current", credentials);
+  currentUser() {
+    return axios.get("users/current");
   }
 
   logoutUser(credentials) {

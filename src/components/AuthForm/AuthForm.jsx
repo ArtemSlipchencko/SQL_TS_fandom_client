@@ -3,10 +3,12 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import userOperations from "../../redux/operations/userOperations";
 import "./authForm.scss";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 export default function AuthForm() {
   const dispatch = useDispatch();
   const [isRegister, setRegister] = useState(true);
+  const navigate = useNavigate();
 
   return (
     <div className="form-container">
@@ -17,7 +19,11 @@ export default function AuthForm() {
             : { name: "", password: "" }
         }
         onSubmit={(values) => {
-          dispatch(userOperations.createUser({ ...values }));
+          isRegister
+            ? dispatch(userOperations.createUser({ ...values }))
+            : dispatch(userOperations.loginUser({ ...values }));
+
+          navigate("/", { replace: true });
         }}
       >
         <Form>

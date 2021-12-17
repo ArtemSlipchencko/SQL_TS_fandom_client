@@ -3,17 +3,34 @@ import { combineReducers } from "redux";
 import authActions from "../actions/userActions";
 
 const user = createReducer(null, {
-  [authActions.registerSuccess]: (state, { payload }) => payload,
-  [authActions.loginSuccess]: (state, { payload }) => payload,
-  [authActions.getCurrentUserSuccess]: (state, { payload }) => payload,
+  [authActions.loginSuccess]: (_, { payload }) => {
+    return {
+      ID: payload.data.result[0].ID,
+      name: payload.data.result[0].name,
+      rights: payload.data.result[0].rights,
+    };
+  },
+  [authActions.getCurrentUserSuccess]: (_, { payload }) => {
+    return {
+      ID: payload.data.ID,
+      name: payload.data.name,
+      rights: payload.data.rights,
+    };
+  },
 });
 
-const token = createReducer(null, {});
+const token = createReducer(null, {
+  [authActions.loginSuccess]: (_, { payload }) => payload.data.result[0].token,
+});
 
-const isAuthenticated = createReducer(false, {});
+const isAuth = createReducer(false, {
+  [authActions.loginSuccess]: (_, action) => true,
+  [authActions.getCurrentUserSuccess]: (_, action) => true,
+  [authActions.logOutSuccess]: (_, action) => false,
+});
 
 export default combineReducers({
   user,
   token,
-  isAuthenticated,
+  isAuth,
 });
