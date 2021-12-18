@@ -29,8 +29,8 @@ class Backend {
     return axios.get("users/current");
   }
 
-  logoutUser(credentials) {
-    return axios.post("users/logout", credentials);
+  logoutUser() {
+    return axios.post("users/logout");
   }
 }
 

@@ -1,0 +1,28 @@
+.select-list {
+  width: 200px;
+  height: fit-content;
+
+  display: flex;
+  flex-direction: column;
+
+  border: solid 2px black;
+  border-top: none;
+
+  & li {
+    height: fit-content;
+
+    & button {
+      &:hover {
+        background-color: black;
+        color: white;
+      }
+
+      transition: all 250ms linear;
+
+      height: 30px;
+      display: block;
+      width: 100%;
+      border: none;
+    }
+  }
+}

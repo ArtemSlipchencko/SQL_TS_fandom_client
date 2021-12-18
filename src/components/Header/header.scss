@@ -1,7 +1,44 @@
 .header {
+  font-size: 20px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
   width: 100%;
+  height: 40px;
   padding: 0 20px;
+
+  box-shadow: 0 0 10px black;
+}
+
+.nav-list {
+  height: 100%;
+  transition: all 250ms linear;
+  color: inherit;
+  display: flex;
+
+  & li {
+    height: 100%;
+    display: flex;
+    color: inherit;
+
+    & .active {
+      box-shadow: 0 12px 5px -5px black;
+    }
+
+    & .nav-link {
+      padding: 0 5px;
+      height: 100%;
+      display: inline-flex;
+      align-items: center;
+      color: inherit;
+
+      transition: all 250ms linear;
+
+      &:hover {
+        background-color: black;
+        color: white;
+      }
+    }
+  }
 }

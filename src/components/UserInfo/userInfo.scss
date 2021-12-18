@@ -1,0 +1,70 @@
+.user-info-box {
+  & .name {
+    transition: all 250ms linear;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+    padding: 0 10px;
+
+    &:hover {
+      background-color: rgb(99, 99, 243);
+      box-shadow: 0 0 15px rgb(99, 99, 243);
+      color: white;
+      cursor: pointer;
+    }
+  }
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+
+  & button {
+    font-size: 15px;
+
+    margin-left: 20px;
+
+    width: 100px;
+    height: 40px;
+
+    border: none;
+    border-radius: 20px;
+
+    transition: all 250ms linear;
+
+    &:hover {
+      background-color: red;
+      box-shadow: 0 0 15px red;
+      color: white;
+    }
+  }
+}
+
+.sign-link {
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 100px;
+
+  transition: all 250ms linear;
+
+  border-radius: 20px;
+  &:hover {
+    background-color: green;
+    box-shadow: 0 0 15px green;
+    color: white;
+  }
+}
+
+.select-list-wrapper {
+  position: absolute;
+  top: 40px;
+  right: 80px;
+  z-index: 1;
+
+  height: fit-content;
+  width: fit-content;
+}

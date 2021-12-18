@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import UserInfo from "../UserInfo/UserInfo";
 import "./header.scss";
 
@@ -8,9 +8,21 @@ export default function Header() {
     <>
       <div className="header">
         <span>FANDOM</span>
-        <ul>
+        <ul className="nav-list">
           <li>
-            <Link to="/">Main</Link>
+            <NavLink className="nav-link" to="/">
+              Main
+            </NavLink>
+          </li>
+          <li>
+            <NavLink className="nav-link" to="/home">
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink className="nav-link" to="/about">
+              About Us
+            </NavLink>
           </li>
         </ul>
         <UserInfo />

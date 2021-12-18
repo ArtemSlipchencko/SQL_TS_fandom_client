@@ -29,7 +29,7 @@ class User {
     dispatch(actions.logOutRequest);
 
     try {
-      const user = await api.logoutUser(token);
+      const user = await api.logoutUser();
       api.unsetToken(token);
       dispatch(actions.logOutSuccess(user));
     } catch (err) {
@@ -42,6 +42,9 @@ class User {
     const {
       auth: { token: persistedToken },
     } = getState();
+    if (!persistedToken) {
+      return;
+    }
 
     api.setToken(persistedToken);
 

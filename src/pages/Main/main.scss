@@ -1,0 +1,40 @@
+.content-list {
+  & .content-item {
+    min-height: 200px;
+
+    margin-bottom: 50px;
+    border-radius: 20px;
+    padding: 10px;
+
+    border-bottom: solid 2px black;
+
+    transition: all 250ms linear;
+
+    &:hover {
+      transform: scale(1.1);
+      background-color: rgba($color: #000000, $alpha: 0.1);
+      cursor: pointer;
+    }
+
+    & .article-container {
+      display: flex;
+      flex-direction: column;
+
+      & div {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+
+        margin-bottom: 10px;
+
+        & .article-title {
+          font-weight: bold;
+        }
+
+        & .article-author {
+          color: gray;
+        }
+      }
+    }
+  }
+}

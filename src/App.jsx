@@ -4,10 +4,10 @@ import { useDispatch } from "react-redux";
 import Header from "./components/Header/Header";
 import Main from "./pages/Main/Main";
 import Auth from "./pages/Auth/Auth";
+import NotImplemented from "./components/NotImplemented/NotImplemented";
 import NotFound from "./pages/NotFound/NotFound";
 import userOperations from "./redux/operations/userOperations";
 import "./sass/main.scss";
-import { useSelector } from "react-redux";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -22,7 +22,9 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/auth" element={<Auth />} />
-          <Route element={<NotFound />} />
+          <Route path="/home" element={<NotImplemented />} />
+          <Route path="/about" element={<NotImplemented />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
     </>
