@@ -13,10 +13,6 @@ class Backend {
     axios.defaults.headers.common.Authorization = `Bearer ''`;
   }
 
-  getPosts() {
-    return axios.get("publish/article");
-  }
-
   createUser(credentials) {
     return axios.post("users/register", credentials);
   }
@@ -31,6 +27,22 @@ class Backend {
 
   logoutUser() {
     return axios.post("users/logout");
+  }
+
+  getPosts() {
+    return axios.get("publish/article");
+  }
+
+  createPost(data) {
+    return axios.post("publish/article", data);
+  }
+
+  editPost() {
+    return axios.patch("publish/article");
+  }
+
+  removePost() {
+    return axios.delete("publish/article");
   }
 }
 

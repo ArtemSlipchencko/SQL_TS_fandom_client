@@ -20,7 +20,12 @@ export default function UserInfo() {
   return (
     <>
       {isAuth && isOpen && (
-        <div className="select-list-wrapper">
+        <div
+          onClick={() => {
+            setOpen(false);
+          }}
+          className="select-list-wrapper"
+        >
           <SelectList />
         </div>
       )}

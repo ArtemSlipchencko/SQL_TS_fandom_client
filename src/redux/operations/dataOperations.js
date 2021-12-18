@@ -13,16 +13,19 @@ class Data {
     }
   };
 
-  //   register = (credentials) => async (dispatch) => {
-  //     dispatch(authActions.registerRequest());
-  //     try {
-  //       const response = await axios.post("/users", credentials);
-  //       console.log("register", response);
-  //       dispatch(authActions.registerSuccess(response.data));
-  //     } catch (error) {
-  //       dispatch(authActions.loginError(error.message));
-  //     }
-  //   };
+  createData = (data, token) => async (dispatch) => {
+    api.setToken(token);
+
+    dispatch(actions.createPostRequest());
+
+    try {
+      const posts = await api.createPost(data);
+      dispatch(actions.createPostSuccess(posts.data));
+      api.unsetToken();
+    } catch (err) {
+      dispatch(actions.createPostError(err));
+    }
+  };
 }
 
 const data = new Data();
