@@ -26,6 +26,32 @@ class Data {
       dispatch(actions.createPostError(err));
     }
   };
+
+  editData = (data, token) => async (dispatch) => {
+    api.setToken(token);
+
+    dispatch(actions.editPostRequest());
+
+    try {
+      const posts = await api.editPost(data);
+      dispatch(actions.editPostSuccess(posts.data));
+    } catch (err) {
+      dispatch(actions.editPostError(err));
+    }
+  };
+
+  deleteData = (data, token) => async (dispatch) => {
+    api.setToken(token);
+
+    dispatch(actions.deletePostRequest());
+
+    try {
+      const posts = await api.removePost(data);
+      dispatch(actions.deletePostSuccess(posts.data));
+    } catch (err) {
+      dispatch(actions.deletePostError(err));
+    }
+  };
 }
 
 const data = new Data();
